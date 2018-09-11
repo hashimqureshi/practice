@@ -1,3 +1,5 @@
+from card import Card
+
 suit_list = ('C', 'D', 'H', 'S')
 numeral_list = {"2":2, "3":3, "4":4, "5":5, "6":6, "7":7, "8":8, "9":9, "T":10, "J":11, "Q":12, "K":13, "A":14}
 #
@@ -19,9 +21,10 @@ class InputValidation:
             if not len(cards) == 5:
                 raise ValueError("Invalid")
             for card in cards:
-                if (not (card[0] in numeral_list.keys() and card[1] in suit_list and len(card) == 2)) or card in knownValue:
+                if (not len(card) == 2) or card in knownValue:
                     raise ValueError("Invalid")
                 else:
+                    Card(card[0], card[1])
                     knownValue.append(card)
         return True
 
